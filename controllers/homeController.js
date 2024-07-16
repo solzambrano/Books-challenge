@@ -1,14 +1,20 @@
 let db = require('../database/models');
 
 const homeController={
-    home:(req,res)=>{
+    listBook:(req,res)=>{
         db.Book.findAll({
         include:[{association:'authors'}]
         })
         .then(books => {
             res.render('home',{books})
-    })
-        // res.render('home')
+        })
+        .catch((err) => console.log(err));
+    },
+    detailBook:(req,res)=>{
+        db.Book.findByPk(req.params.id)
+        .then(book=>{
+            res.render('bookDetail',{book})
+        })
     }
 }
 

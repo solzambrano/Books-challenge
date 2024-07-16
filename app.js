@@ -8,7 +8,7 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 
 
-const home=require('./routes/routesHome')
+const home=require('./routes/routesBook')
 
 app.listen(3000, () => {
   console.log('listening in http://localhost:3000');
