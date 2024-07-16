@@ -1,11 +1,14 @@
 const express=require('express');
 const router=express.Router();
-const homeController=require('../controllers/homeController')
+const bookController=require('../controllers/bookController')
 
-router.get('/',homeController.listBook)
-router.get('/books/detail/:id',homeController.detailBook)
+router.get('/',bookController.listBook)
+router.get('/books/detail/:id',bookController.detailBook)
 
-router.get('/books/edit/:id',homeController.updateBook)
-router.put('/books/edit/:id',homeController.processUpdateBook)
+router.get('/books/edit/:id',bookController.updateBook)
+router.put('/books/edit/:id',bookController.processUpdateBook)
+
+router.post('/books/edit/:id',bookController.deleteeBook)
+
 
 module.exports=router

@@ -1,6 +1,6 @@
 let db = require('../database/models');
 
-const homeController={
+const bookController={
     listBook:(req,res)=>{
         db.Book.findAll({
         include:[{association:'authors'}]
@@ -35,13 +35,18 @@ const homeController={
         console.log(req.params.id);
         console.log(book[0]);
         if (book[0] === 1) {
-         res.redirect('/');
+            res.redirect('/');
         } else {
-         res.status(404).send('Book not found');
+            res.status(404).send('Book not found');
          }
         })
         .catch(err=>console.log(err))
+    },
+    deleteBook:(req,res)=>{
+        db.Book.destroy({
+            where:{id:req.params.id}
+        })
     }
 }
 
-module.exports=homeController
+module.exports=bookController
