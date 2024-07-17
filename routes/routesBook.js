@@ -8,7 +8,7 @@ router.get('/books/detail/:id',bookController.detailBook)
 router.get('/books/edit/:id',bookController.updateBook)
 router.put('/books/edit/:id',bookController.processUpdateBook)
 
-router.post('/books/edit/:id',bookController.deleteeBook)
+router.post('/books/edit/:id',bookController.deleteBook)
 
 
 module.exports=router

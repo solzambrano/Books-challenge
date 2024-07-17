@@ -10,7 +10,8 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 
 
-const home=require('./routes/routesBook')
+const home=require('./routes/routesBook');
+const authors=require('./routes/routesAuthor')
 
 app.listen(3000, () => {
   console.log('listening in http://localhost:3000');
@@ -20,6 +21,7 @@ app.listen(3000, () => {
 //rutas
 
 app.use('/',home)
+app.use('/authors',authors)
 
 app.use(((req,res,next)=>{
     res.status(404).render('not-found')
