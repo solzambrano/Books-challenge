@@ -10,6 +10,9 @@ const bookController={
         })
         .catch((err) => console.log(err));
     },
+    searchBook:(req,res)=>{
+        res.render('search')
+    },
     detailBook:(req,res)=>{
         db.Book.findByPk(req.params.id,{
              include:[{association:'authors'}]
@@ -40,6 +43,20 @@ const bookController={
             res.status(404).send('Book not found');
          }
         })
+        .catch(err=>console.log(err))
+    },
+    processSearchBook:(req,res)=>{
+       db.Book.findAll({
+        include: [{ association: 'authors' }],
+        where: {
+            title: {
+                [db.Sequelize.Op.like]: '%'+req.body.title+'%'
+            }
+        },
+    })
+    .then(books => {
+        res.render('search', { books })
+    })
         .catch(err=>console.log(err))
     },
     deleteBook:(req,res)=>{
