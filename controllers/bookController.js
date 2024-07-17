@@ -13,6 +13,9 @@ const bookController={
     searchBook:(req,res)=>{
         res.render('search')
     },
+    createBook:(req,res)=>{
+        res.render('create')
+    },
     detailBook:(req,res)=>{
         db.Book.findByPk(req.params.id,{
              include:[{association:'authors'}]
@@ -35,13 +38,7 @@ const bookController={
         {where:{id:req.params.id}}
         )
        .then((book) => {
-        console.log(req.params.id);
-        console.log(book[0]);
-        if (book[0] === 1) {
-            res.redirect('/');
-        } else {
-            res.status(404).send('Book not found');
-         }
+        book[0] === 1 ? res.redirect('/'): res.status(404).send('Book not found');
         })
         .catch(err=>console.log(err))
     },
@@ -59,10 +56,26 @@ const bookController={
     })
         .catch(err=>console.log(err))
     },
+    processCreateBook:(req,res)=>{
+        db.Book.create({
+            title:req.body.title,
+            cover:req.body.cover,
+            description:req.body.description
+        }).then((book)=>{
+            console.log('mira aqui',book);
+        (book && book.id)  ? res.redirect('/'): res.status(404).send('not create book');
+        })
+    },
     deleteBook:(req,res)=>{
+            console.log('id:',req.params.id);
         db.Book.destroy({
             where:{id:req.params.id}
-        })
+        }).then((book)=>{
+            res.redirect('/')
+
+        // book[0] === 1 ? res.redirect('/'): res.status(404).send('Book not found');
+            // res.json('post eiminado')
+        }) .catch(err=>console.log(err))
     }
 }
 
