@@ -12,6 +12,8 @@ app.set('view engine', 'ejs');
 
 const home=require('./routes/routesBook');
 const authors=require('./routes/routesAuthor')
+const user=require('./routes/routesUser')
+
 
 app.listen(3000, () => {
   console.log('listening in http://localhost:3000');
@@ -22,6 +24,7 @@ app.listen(3000, () => {
 
 app.use('/',home)
 app.use('/authors',authors)
+app.use('/users',user)
 
 app.use(((req,res,next)=>{
     res.status(404).render('not-found')
