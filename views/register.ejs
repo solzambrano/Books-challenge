@@ -24,7 +24,12 @@
                   <h6 class="mb-0">Full name</h6>
                 </div>
                 <div class="col-md-9 pe-5">
-                  <input type="text" name="name" required class="form-control form-control-lg" />
+                  <input type="text" name="name" required 
+                    class="form-control form-control-lg" 
+                    value="<%= locals.oldData ? oldData.name : '' %>"> 
+                    <% if (locals.errors && errors.name) { %>
+                      <p class="text-danger"><%=errors.name.msg %></p>
+                    <%}%>
                 </div>
               </div>
               <hr class="mx-n3">
@@ -33,7 +38,12 @@
                   <h6 class="mb-0">Email</h6>
                 </div>
                 <div class="col-md-9 pe-5">
-                  <input type="email" required name="email" class="form-control form-control-lg" placeholder="example@gmail.com" />
+                  <input type="email" required name="email" 
+                  class="form-control form-control-lg" placeholder="example@gmail.com" 
+                   value="<%= locals.oldData ? oldData.email : '' %>">
+                 <% if (locals.errors && errors.email) { %>
+                  <p class="text-danger"><%=errors.email.msg %></p>
+                  <%}%>
                 </div>
               </div>
               <hr class="mx-n3">
@@ -42,7 +52,12 @@
                   <h6 class="mb-0">Country</h6>
                 </div>
                 <div class="col-md-9 pe-5">
-                  <input type="text" name="country" class="form-control form-control-lg" placeholder="Argentina" />
+                  <input type="text" name="country" 
+                  class="form-control form-control-lg" placeholder="Argentina" 
+                   value="<%= locals.oldData ? oldData.email : '' %>">
+                 <% if (locals.errors && errors.country) { %>
+                  <p class="text-danger"><%=errors.country.msg %></p>
+                  <%}%>
                 </div>
               </div>
               <hr class="mx-n3">
@@ -51,7 +66,11 @@
                   <h6 class="mb-0">Password</h6>
                 </div>
                 <div class="col-md-9 pe-5">
-                  <input type="password" required name="password" class="form-control form-control-lg" >
+                  <input type="password" required name="password" 
+                  class="form-control form-control-lg" 
+                 <% if (locals.errors && errors.password) { %>
+                  <p class="text-danger"><%=errors.password.msg %></p>
+                  <%}%>
                 </div>
               </div>
               <hr class="mx-n3">
