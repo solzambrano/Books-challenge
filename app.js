@@ -4,7 +4,7 @@ const method=require('method-override');
 const app = express();
 const session =require('express-session');
 const cookies =require('cookie-parser');
-const categoryUser=require('./middleware/validationCategoryMiddleware')
+// const categoryUser=require('./middleware/validationCategoryMiddleware')
 app.use(express.static('./public'));
 //configuracion put y delete
 app.use(method('_method'));
@@ -17,7 +17,7 @@ app.use(session({
   saveUninitialized: false,
 }));
 app.use(cookies());
-app.use(categoryUser)
+// app.use(categoryUser)
 
 const home=require('./routes/routesBook');
 const authors=require('./routes/routesAuthor')

@@ -3,7 +3,7 @@ const bcryptjs = require("bcryptjs");
 
 const userController={
     login:(req,res)=> res.render('login'),
- processLogin: (req, res) => {
+    processLogin: (req, res) => {
     db.User.findOne({
         where: {
             email: req.body.email
@@ -11,16 +11,13 @@ const userController={
     })
     .then(user => {
         if (user) {
-            bycryptjs.CompareSync()
-            if (user.pass === req.body.password) {
+           let userRegister= bcryptjs.compareSync(req.body.password,user.Pass);
+           req.session.userPassword=userRegister
+            if (userRegister) {
                 req.session.user = user;
                 res.cookie('user', user.name, { maxAge: 1000 });
-                res.json({ success: true, message: 'Usuario encontrado' });
-            } else {
-                res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
+                res.redirect('/')
             }
-        } else {
-            res.status(404).json({ success: false, message: 'Usuario no encontrado' });
         }
     })
     .catch(error => {
@@ -38,10 +35,9 @@ const userController={
             CategoryId:req.body.category
         }).then((USER)=>{
          console.log('Datos recibidos:', USER);
-
             res.redirect('/')
-            // res.json('exito')
-        }).catch(err=>console.log(err))
+        }).catch(err=>console.log('err register:',err))
+        res.status(500).json({ success: false, message: 'Error en el servidor' });
     }
 
 }

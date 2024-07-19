@@ -12,7 +12,7 @@
 <body>
   <div class="container">
   <%- include('partials/header.ejs') %>
-  <section class="vh-100" style="background-color: #2779e2;">
+  <section class="vh-85" style="background-color: #2779e2;">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-6">
@@ -26,7 +26,12 @@
                   <h6 class="mb-0">Email</h6>
                 </div>
                 <div class="col-md-9 pe-5">
-                  <input type="email" name="email" class="form-control form-control-lg" placeholder="example@gmail.com" />
+                  <input type="email" name="email" requerid 
+                  class="form-control form-control-lg" placeholder="example@gmail.com" 
+                   value="<%= locals.oldData ? oldData.email : '' %>"/>
+                 <% if (locals.errors && errors.email) { %>
+                  <p class="text-danger"><%=errors.email.msg %></p>
+                  <%}%>
                 </div>
               </div>
               <hr class="mx-n3">
@@ -35,7 +40,11 @@
                   <h6 class="mb-0">Password</h6>
                 </div>
                 <div class="col-md-9 pe-5">
-                  <input type="password" name="password" class="form-control form-control-lg" >
+                  <input type="password" name="password" 
+                  required class="form-control form-control-lg"
+                   <% if (locals.errors && errors.pass) { %>
+                      <p class="text-danger"><%=errors.pass.msg %></p>
+                  <%}%>
                 </div>
               </div>
               <hr class="mx-n3">
@@ -44,7 +53,6 @@
               </div>
             </div>
           </form>
-  
         </div>
       </div>
     </div>
