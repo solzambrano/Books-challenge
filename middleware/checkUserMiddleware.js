@@ -6,7 +6,6 @@ const checkEmailUser = (req, res, next) => {
             where: { email: req.body.email }
         })
         .then((user)=>{
-            console.log('lo encocntre');
             if (user){
                  return res.render('register', {
 				errors: {

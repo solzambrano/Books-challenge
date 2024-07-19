@@ -42,7 +42,7 @@
                 <div class="col-md-9 pe-5">
                   <input type="password" name="password" 
                   required class="form-control form-control-lg"
-                   <% if (locals.errors && errors.pass) { %>
+                    <% if (locals.errors && errors.email) { %>
                       <p class="text-danger"><%=errors.pass.msg %></p>
                   <%}%>
                 </div>

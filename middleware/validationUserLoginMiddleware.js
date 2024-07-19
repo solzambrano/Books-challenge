@@ -8,7 +8,6 @@ const validationDataUser = (req, res, next) => {
         })
         .then((user)=>{
             if (!user){
-                console.log('no lo encontre');
                   return res.render('login', {
 				errors: {
 					email: {
