@@ -8,6 +8,7 @@ const userController=require('../controllers/userController')
 
 router.get('/login',userController.login)
 router.get('/register',userController.register)
+router.get("/logout", userController.logout);
 router.post('/login',validationUser,errorMiddleware('login'),handlerLogin,userController.processLogin)
 router.post('/register',checkUser,errorMiddleware('register'),userController.processRegister)
 

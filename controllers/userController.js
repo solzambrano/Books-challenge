@@ -38,7 +38,12 @@ const userController={
             res.redirect('/')
         }).catch(err=>console.log('err register:',err))
         res.status(500).json({ success: false, message: 'Error en el servidor' });
-    }
+    },
+    logout: function (req, res) {
+		res.clearCookie("user");
+		req.session.destroy();
+		return res.redirect("/");
+	},
 
 }
 
