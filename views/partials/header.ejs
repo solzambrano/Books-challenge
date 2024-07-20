@@ -4,24 +4,22 @@
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/VisualEditor_-_Icon_-_Open-book-2.svg/1024px-VisualEditor_-_Icon_-_Open-book-2.svg.png" alt="twbs" width="50" height="50" class="rounded-circle flex-shrink-0">
-    <!-- <button class="navbar-toggler text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon bg-light text-dark"></span>
-    </button> -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
-</button>
+  </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav justify-content-center me-auto mb-2 mb-lg-0">
          <li><a href="/" class="nav-link px-2 link-dark">Books</a></li>
          <li><a href="/authors" class="nav-link px-2 link-dark">Authors</a></li>
        <li><a href="/books/search" class="nav-link px-2 link-dark">Search</a></li>
       </ul>
-      <span class="navbar-text d-flex">
+        <ul class="navbar-nav ">
+      <!-- <span class="navbar-text d-flex"> -->
          <% if(!locals.userLogged){ %>
-        <a href="/users/login" class="btn btn-outline-primary me-2">Login</a>
+         <li class="nav-item"><a href="/users/login" class="btn btn-outline-primary me-2">Login</a></li>
         <% } else if (locals.isLogged) { %>
-         <a href="/books/create" class="btn btn-outline-primary me-2">Create</a>
-          <a href="/users/register" class="btn btn-outline-primary me-2">Sign-up</a>
+         <li class="nav-item"><a href="/books/create" class=" btn btn-outline-primary me-2">Create</a></li>
+           <li class="nav-item"><a href="/users/register" class="btn btn-outline-primary me-2">Sign-up</a></li>
          <li class="nav-item dropdown list-unstyled">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <%= locals.userLogged %>
@@ -31,7 +29,8 @@
           </ul>
         </li>
        <% } %>
-      </span>
+      <!-- </span> -->
+      </ul>
     </div>
   </div>
 </nav>
