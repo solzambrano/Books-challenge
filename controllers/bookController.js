@@ -14,7 +14,12 @@ const bookController={
         res.render('search')
     },
     createBook:(req,res)=>{
-        res.render('create')
+        db.Author.findAll({
+            order:[['name','ASC']]
+        })
+        .then(authors=>{
+        res.render('create',{authors})
+        }). catch(err =>console.log(err))
     },
     detailBook:(req,res)=>{
         db.Book.findByPk(req.params.id,{

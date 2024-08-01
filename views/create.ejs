@@ -28,7 +28,6 @@
                   value="<%= locals.oldData ? oldData.tittle : '' %>"/>
                 </div>
               </div>
-              <hr class="mx-n3">
               <div class="row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
                   <h6 class="mb-0">Cover</h6>
@@ -38,7 +37,6 @@
                    value="<%= locals.oldData ? oldData.cover : '' %>"/>
                 </div>
               </div>
-              <hr class="mx-n3">
               <div class="row align-items-center py-3">
                 <div class="col-md-3 ps-5">
                   <h6 class="mb-0">Description</h6>
@@ -49,7 +47,19 @@
                   value="<%= locals.oldData ? oldData.description : '' %>"/>
                 </div>
               </div>
-              <hr class="mx-n3">
+                  <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">Autores</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <select class="form-select" name="autores">
+                    <% {authors.forEach(author => {%>
+                     <option value="<%= author.name %>"><%= author.name %></option>
+                   <% })} %>
+                  </select> 
+                  <!-- value="<%= locals.oldData ? oldData.description : '' %>"/> -->
+                </div>
+              </div>
               <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <button type="submit" class="btn btn-primary btn-lg">Create</button>
                 <a href="/" >
