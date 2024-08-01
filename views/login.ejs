@@ -33,15 +33,14 @@
                   <%}%>
                 </div>
               </div>
-              <hr class="mx-n3">
               <div class="row align-items-center py-3">
                 <div class="col-md-3 ps-5">
                   <h6 class="mb-0">Password</h6>
                 </div>
                 <div class="col-md-9 pe-5">
                   <input type="password" name="password" 
-                  required class="form-control form-control-lg"
-                    <% if (locals.errors && errors.email) { %>
+                  required class="form-control form-control-lg">
+                    <% if (locals.errors && errors.pass) { %>
                       <p class="text-danger"><%=errors.pass.msg %></p>
                   <%}%>
                 </div>

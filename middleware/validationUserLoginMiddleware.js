@@ -27,6 +27,8 @@ const validationDataUser = (req, res, next) => {
 				},
 				oldData: req.body
 			});
+           }else{
+            req.session.userPassword=userRegister
            }
             }
         }).catch(err=> console.log(err));

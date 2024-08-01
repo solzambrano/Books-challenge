@@ -11,11 +11,10 @@ const userController={
     })
     .then(user => {
         if (user) {
-           let userRegister= bcryptjs.compareSync(req.body.password,user.Pass);
-           req.session.userPassword=userRegister
-            if (userRegister) {
+            if (req.session.userPassword) {
                 req.session.user = user;
-                res.cookie('user', user.name, { maxAge: 1000 });
+                console.log('MIRAAAAAAAAAAAAA',user);
+                res.cookie('user', user.Name, { maxAge: 1000 });
                 res.redirect('/books')
             }
         }
