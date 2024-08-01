@@ -16,7 +16,7 @@ const userController={
             if (userRegister) {
                 req.session.user = user;
                 res.cookie('user', user.name, { maxAge: 1000 });
-                res.redirect('/')
+                res.redirect('/books')
             }
         }
     })
@@ -35,14 +35,14 @@ const userController={
             CategoryId:req.body.category
         }).then((USER)=>{
          console.log('Datos recibidos:', USER);
-            res.redirect('/')
+            res.redirect('/books')
         }).catch(err=>console.log('err register:',err))
         res.status(500).json({ success: false, message: 'Error en el servidor' });
     },
     logout: function (req, res) {
 		res.clearCookie("user");
 		req.session.destroy();
-		return res.redirect("/");
+		return res.redirect("/books");
 	},
 
 }

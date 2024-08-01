@@ -31,7 +31,7 @@ app.listen(3000, () => {
 
 //rutas
 
-app.use('/',home)
+app.use('/books',home)
 app.use('/authors',authors)
 app.use('/users',user)
 

@@ -38,7 +38,7 @@ const bookController={
         {where:{id:req.params.id}}
         )
        .then((book) => {
-        book[0] === 1 ? res.redirect('/'): res.status(404).send('Book not found');
+        book[0] === 1 ? res.redirect('/books.'): res.status(404).send('Book not found');
         })
         .catch(err=>console.log(err))
     },
@@ -63,18 +63,14 @@ const bookController={
             description:req.body.description
         }).then((book)=>{
             console.log('mira aqui',book);
-        (book && book.id)  ? res.redirect('/'): res.status(404).send('not create book');
+        (book && book.id)  ? res.redirect('/books'): res.status(404).send('not create book');
         })
     },
     deleteBook:(req,res)=>{
-            console.log('id:',req.params.id);
         db.Book.destroy({
             where:{id:req.params.id}
         }).then((book)=>{
-            res.redirect('/')
-
-        // book[0] === 1 ? res.redirect('/'): res.status(404).send('Book not found');
-            // res.json('post eiminado')
+            res.redirect('/books')
         }) .catch(err=>console.log(err))
     }
 }
