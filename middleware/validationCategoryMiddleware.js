@@ -1,4 +1,4 @@
-const path = require('path');
+
 const handlerLogin =(req,res,next)=>{
     res.locals.isLogged=false;
     if(req.session && req.session.user){

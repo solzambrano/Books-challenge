@@ -32,13 +32,12 @@ const userController={
             Country:req.body.country,
             Pass:bcryptjs.hashSync(req.body.password, 10),
             CategoryId:req.body.category
-        }).then((USER)=>{
-         console.log('Datos recibidos:', USER);
+        }).then(user=>{
             res.redirect('/books')
         }).catch(err=>console.log('err register:',err))
         res.status(500).json({ success: false, message: 'Error en el servidor' });
     },
-    logout: function (req, res) {
+    logout: (req, res)=> {
 		res.clearCookie("user");
 		req.session.destroy();
 		return res.redirect("/books");
