@@ -6,6 +6,7 @@ router.get('/',bookController.listBook)
 router.get('/detail/:id',bookController.detailBook)
 router.get('/search',bookController.searchBook)
 router.get('/create',bookController.createBook)
+router.post('/create/author',bookController.processCreateAuthor)
 
 router.get('/edit/:id',bookController.updateBook)
 router.put('/edit/:id',bookController.processUpdateBook)
