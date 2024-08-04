@@ -14,7 +14,6 @@
        <li><a href="/books/search" class="nav-link px-2 link-dark">Search</a></li>
       </ul>
         <ul class="navbar-nav ">
-      <!-- <span class="navbar-text d-flex"> -->
          <% if(!locals.userLogged){ %>
          <li class="nav-item"><a href="/users/login" class="btn btn-outline-primary me-2">Login</a></li>
         <% } else if (locals.isLogged) { %>
@@ -29,7 +28,8 @@
           </ul>
         </li>
        <% } %>
-      <!-- </span> -->
+         <li class="nav-item"><a href="/authors/create" class="btn btn-outline-primary me-2">crearrrr</a></li>
+
       </ul>
     </div>
   </div>
