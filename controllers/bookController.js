@@ -67,7 +67,6 @@ const bookController={
             cover:req.body.cover,
             description:req.body.description
         }).then(book=>{
-            console.log('mira aqui',book);
         (book && book.id)  ? res.redirect('/books'): res.status(404).send('not create book');
         })
     },

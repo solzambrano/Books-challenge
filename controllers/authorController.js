@@ -19,6 +19,9 @@ const authorController={
         })
         .catch(err=>console.log(err))
     },
+    createAuthor:(req,res)=>{
+        res.render('createAuthor')
+    }
 }
 
 module.exports=authorController

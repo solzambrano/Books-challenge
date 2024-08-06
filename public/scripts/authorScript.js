@@ -1,7 +1,7 @@
 let addAuthor=document.getElementById("addAuthor");
 let formAuthor=document.getElementById("formAuthor");
-let cancelAuthor=document.getElementById("cancelAuthor")
-let cancel =document.getElementsByClassName("cancel")
+let cancelAuthor=document.getElementById("cancelAuthor");
+let cancel =document.getElementsByClassName("cancel");
 
 document.addEventListener("DOMContentLoaded", (event) => {
   formAuthor.style.display='none';
