@@ -1,11 +1,11 @@
 const express=require('express');
 const router=express.Router();
-const errorMiddleware=require('../middleware/errorMiddleware');
-const validationUser=require('../middleware/validationUserLoginMiddleware')
-const handlerLogin=require('../middleware/validationCategoryMiddleware');
-const checkUser=require('../middleware/checkUserMiddleware');
-const validationLogin=require('../middleware/validationLoginMiddleware');
-const validationRegister=require('../middleware/validationRegisterMiddleware');
+const errorMiddleware=require('../middleware/users/errorMiddleware');
+const validationUser=require('../middleware/users/validationUserLoginMiddleware')
+const handlerLogin=require('../middleware/users/validationCategoryMiddleware');
+const checkUser=require('../middleware/users/checkUserMiddleware');
+const validationLogin=require('../middleware/users/validationLoginMiddleware');
+const validationRegister=require('../middleware/users/validationRegisterMiddleware');
 const userController=require('../controllers/userController')
 
 router.get('/login',userController.login)

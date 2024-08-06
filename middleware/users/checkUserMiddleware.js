@@ -1,5 +1,5 @@
 
-const db = require('../database/models');
+const db = require('../../database/models');
 
 const checkEmailUser = (req, res, next) => {
        db.User.findOne({

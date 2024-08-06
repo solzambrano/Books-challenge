@@ -1,5 +1,5 @@
 
-const db = require('../database/models');
+const db = require('../../database/models');
 const bcryptjs = require("bcryptjs");
 
 const validationDataUser = (req, res, next) => {
