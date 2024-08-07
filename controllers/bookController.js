@@ -61,14 +61,24 @@ const bookController={
     })
         .catch(err=>console.log(err))
     },
-    processCreateBook:(req,res)=>{
-        db.Book.create({
+    processCreateBook:async(req,res)=>{
+        console.log(req.body);
+        
+        const book= await db.Book.create({
             title:req.body.title,
             cover:req.body.cover,
             description:req.body.description
-        }).then(book=>{
-        (book && book.id)  ? res.redirect('/books'): res.status(404).send('not create book');
         })
+        const author= await db.Author.create({
+            name:req.body.author,
+            country:req.body.country
+        })
+         if (book && book.id && author && author.id) {
+            await book.addAuthor(author);
+            res.redirect('/books');
+        } else {
+            res.status(404).send('No se pudo crear el libro o el autor');
+        }
     },
     deleteBook:(req,res)=>{
         db.Book.destroy({

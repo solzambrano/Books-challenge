@@ -22,7 +22,6 @@
                 <div class="col-md-3 ps-5">
                   <h6 class="mb-0">Title</h6>
                 </div>
-                <%console.log('vista',locals.oldData?.title)%>
                 <div class="col-md-9 pe-5">
                   <input type="text" name="title" 
                   class="form-control form-control-lg"  requerid 
@@ -56,12 +55,12 @@
                   <h6 class="mb-0">Authors</h6>
                 </div>
                 <div class="col-md-9 pe-5">
-                  <select class="form-select" name="autores">
+                  <select class="form-select" name="author">
                     <% if(locals.authors) { %>
                     <option value="add_new">Selected author</option>
                     <% {authors.forEach(author => {%>
                      <option value="<%= author.name %>" 
-                      <%= (locals.oldData && locals.oldData.autores === author.name) ? 'selected' : '' %> >
+                      <%= (locals.oldData && locals.oldData.author === author.name) ? 'selected' : '' %> >
                       <%= author.name %>
                     </option>
                    <% })} %>
