@@ -57,7 +57,7 @@
                 <div class="col-md-9 pe-5">
                   <select class="form-select" name="author">
                     <% if(locals.authors) { %>
-                    <option value="add_new">Selected author</option>
+                    <option value="select">Selected author</option>
                     <% {authors.forEach(author => {%>
                      <option value="<%= author.name %>" 
                       <%= (locals.oldData && locals.oldData.author === author.name) ? 'selected' : '' %> >

@@ -62,8 +62,6 @@ const bookController={
         .catch(err=>console.log(err))
     },
     processCreateBook:async(req,res)=>{
-        console.log(req.body);
-        
         const book= await db.Book.create({
             title:req.body.title,
             cover:req.body.cover,
@@ -80,12 +78,19 @@ const bookController={
             res.status(404).send('No se pudo crear el libro o el autor');
         }
     },
-    deleteBook:(req,res)=>{
-        db.Book.destroy({
-            where:{id:req.params.id}
-        }).then(book=>{
-            res.redirect('/books')
-        }) .catch(err=>console.log(err))
+    deleteBook:async (req,res)=>{
+        const book= await db.Book.findByPk(req.params.id)
+        console.log(book);
+        if (book) {
+            // Primero, elimina las relaciones en la tabla booksauthors
+            await db.sequelize.models.BooksAuthors.destroy({
+                where: { BookId: req.params.id }
+            });
+        await db.Book.destroy({
+            where: { id: req.params.id }
+        });
+        res.redirect('/books');
+        }
     }
 }
 
