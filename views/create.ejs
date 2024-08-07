@@ -22,10 +22,14 @@
                 <div class="col-md-3 ps-5">
                   <h6 class="mb-0">Title</h6>
                 </div>
+                <%console.log('vista',locals.oldData?.title)%>
                 <div class="col-md-9 pe-5">
                   <input type="text" name="title" 
                   class="form-control form-control-lg"  requerid 
-                  value="<%= locals.oldData ? oldData.tittle : '' %>"/>
+                   value="<%= locals.oldData ? locals.oldData.title : '' %>">
+                      <% if (locals.errors && errors.title) { %>
+                      <p class="text-danger"><%=errors.title.msg %></p>
+                    <%}%>
                 </div>
               </div>
               <div class="row align-items-center pt-4 pb-3">
@@ -53,11 +57,13 @@
                 </div>
                 <div class="col-md-9 pe-5">
                   <select class="form-select" name="autores">
+                    <% if(locals.authors) { %>
                     <option value="add_new">Selected author</option>
                     <% {authors.forEach(author => {%>
                      <option class="cancel" value="<%= author.name %>"><%= author.name %></option>
                    <% })} %>
                     <option id="addAuthor" type ="button" value="add_new"> Add new author</option>
+                  <% } %>
                   </select> 
                 </div>
               </div>
