@@ -60,7 +60,10 @@
                     <% if(locals.authors) { %>
                     <option value="add_new">Selected author</option>
                     <% {authors.forEach(author => {%>
-                     <option class="cancel" value="<%= author.name %>"><%= author.name %></option>
+                     <option value="<%= author.name %>" 
+                      <%= (locals.oldData && locals.oldData.autores === author.name) ? 'selected' : '' %> >
+                      <%= author.name %>
+                    </option>
                    <% })} %>
                     <option id="addAuthor" type ="button" value="add_new"> Add new author</option>
                   <% } %>
