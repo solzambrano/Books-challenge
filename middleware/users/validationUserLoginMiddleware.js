@@ -31,8 +31,9 @@ const validationDataUser = (req, res, next) => {
             req.session.userPassword=userRegister
            }
             }
+            next();
         }).catch(err=> console.log(err));
-        next();
+        
 };
 
 module.exports = validationDataUser;

@@ -1,5 +1,6 @@
 const express=require('express');
 const router=express.Router();
+const bookVerification=require('../middleware/book/validationBookMiddleware')
 const bookController=require('../controllers/bookController')
 
 router.get('/',bookController.listBook)
@@ -13,7 +14,7 @@ router.put('/edit/:id',bookController.processUpdateBook)
 router.delete('/edit/:id',bookController.deleteBook)
 
 router.post('/search',bookController.processSearchBook)
-router.post('/create',bookController.processCreateBook)
+router.post('/create',bookVerification,bookController.processCreateBook)
 
 
 module.exports=router
