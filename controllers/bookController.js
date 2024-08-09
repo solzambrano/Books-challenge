@@ -80,9 +80,7 @@ const bookController={
     },
     deleteBook:async (req,res)=>{
         const book= await db.Book.findByPk(req.params.id)
-        console.log(book);
         if (book) {
-            // Primero, elimina las relaciones en la tabla booksauthors
             await db.sequelize.models.BooksAuthors.destroy({
                 where: { BookId: req.params.id }
             });

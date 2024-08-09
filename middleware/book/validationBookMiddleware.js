@@ -1,8 +1,6 @@
 
 const db = require('../../database/models');
 const {Sequelize } = require('sequelize');
-const author=require('../../controllers/bookController')
-
 
 const bookVerification = (req, res, next) => {
      const normalizedTitle = req.body.title.trim().toLowerCase();
