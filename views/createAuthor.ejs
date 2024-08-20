@@ -16,11 +16,35 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-9">
           <h1 class="text-white mb-4">Create author</h1>
-          <form action="/books/create" method="POST"  class="card" style="border-radius: 15px;">
-            <%- include('partials/formCreate.ejs') %>
+          <form action="/author/create" method="POST"  class="card" style="border-radius: 15px;">
+              <div class="card-body">
+              <%- include('partials/formCreate.ejs') %>
+                <div class="row align-items-center py-3">
+                  <div class="col-md-3 ps-5">
+                    <h6 class="mb-0">Book</h6>
+                  </div>
+                  <% console.log(locals.book) %>
+                <div class="col-md-6 pe-5">
+                  <select id="form-select" class="form-select" name="bookAuthor">
+                    <% if(locals.book) { %>
+                    <% {book.forEach(element => {%>
+                     <option value="<%= element.title %>" 
+                      <%= (locals.oldData && locals.oldData.book === element.title) ? 'selected' : '' %> >
+                      <%= element.title %>
+                    </option>
+                   <% })} %>
+                    <option id="addAuthor" type ="button"> add</option>
+                  <% } %>
+                  </select> 
+                </div>
+                <button type="button" id="plus" class=" col-md-2 btn btn-primary">+</button>
+                <div id="select-container">
+
+                </div>
+              </div>
               <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <button type="submit" class="btn btn-primary btn-lg">Create</button>
-                <a href="/" >
+                <a href="/books" >
                   <button type="button" class="btn btn-primary btn-lg">Cancel</button>
                 </a>
               </div>
@@ -32,4 +56,5 @@
 </div>
 <%- include('partials/footer.ejs') %>
 </body>
+<script src="/scripts/scriptSelect.js"></script>
 </html>

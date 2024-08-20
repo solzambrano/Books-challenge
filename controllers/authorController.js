@@ -10,8 +10,9 @@ const authorController={
         })
         .catch((err) => console.log(err));
     },
-    select:(req,res)=>{
-        res.render('partials/select')
+    select:async (req,res)=>{
+        let book= await authorController.bookWithoutAuthor()
+        res.render('partials/select',{book})
     },
     detailAuthor:(req,res)=>{
         db.Author.findByPk(req.params.id,{
@@ -22,8 +23,8 @@ const authorController={
         })
         .catch(err=>console.log(err))
     },
-    createAuthor:(req,res)=>{
-        db.Book.findAll({
+    bookWithoutAuthor:async ()=>{
+        return await db.Book.findAll({
            include: [{
         model: db.Author,
         as: 'authors',
@@ -34,9 +35,11 @@ const authorController={
         '$Authors.id$': null
     },
     order: [['title', 'ASC']]
-}).then(book=>{
+    })
+    },
+    createAuthor:async(req,res)=>{
+       let book= await authorController.bookWithoutAuthor()
             res.render('createAuthor',{book})
-        }).catch(err=>console.log(err))
     }
 }
 

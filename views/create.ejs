@@ -57,14 +57,13 @@
                 <div class="col-md-9 pe-5">
                   <select class="form-select" name="author">
                     <% if(locals.authors) { %>
-                    <option value="select">Selected author</option>
                     <% {authors.forEach(author => {%>
                      <option value="<%= author.name %>" 
                       <%= (locals.oldData && locals.oldData.author === author.name) ? 'selected' : '' %> >
                       <%= author.name %>
                     </option>
                    <% })} %>
-                    <option id="addAuthor" type ="button" value="add_new"> Add new author</option>
+                    <option id="addAuthor" type ="button"> Add new author</option>
                   <% } %>
                   </select> 
                 </div>
@@ -74,7 +73,7 @@
               </div>
               <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <button type="submit" class="btn btn-primary btn-lg">Create</button>
-                <a href="/" >
+                <a href="/books" >
                   <button type="button" class="btn btn-primary btn-lg">Cancel</button>
                 </a>
                  <button id="cancelAuthor" type="button" class="btn btn-primary btn-lg cancel">Cancel new author</button>

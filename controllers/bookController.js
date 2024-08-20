@@ -43,7 +43,7 @@ const bookController={
         {where:{id:req.params.id}}
         )
        .then(book => {
-        book[0] === 1 ? res.redirect('/books.'): res.status(404).send('Book not found');
+        book[0]==1 ? res.redirect('/books'): res.status(404).send('Book not found');
         })
         .catch(err=>console.log(err))
     },
@@ -60,23 +60,6 @@ const bookController={
         res.render('search', { books })
     })
         .catch(err=>console.log(err))
-    },
-    processCreateBook:async(req,res)=>{
-        const book= await db.Book.create({
-            title:req.body.title,
-            cover:req.body.cover,
-            description:req.body.description
-        })
-        const author= await db.Author.create({
-            name:req.body.author,
-            country:req.body.country
-        })
-         if (book && book.id && author && author.id) {
-            await book.addAuthor(author);
-            res.redirect('/books');
-        } else {
-            res.status(404).send('No se pudo crear el libro o el autor');
-        }
     },
     deleteBook:async (req,res)=>{
         const book= await db.Book.findByPk(req.params.id)
