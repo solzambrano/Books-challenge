@@ -1,11 +1,13 @@
 const express=require('express');
 const router=express.Router();
-const authorController=require('../controllers/authorController')
+const authorController=require('../controllers/authorController');
+const bookAuthorController=require('../controllers/bookAuthorController')
 
 router.get('/',authorController.listAuthor)
 router.get('/:id/books',authorController.detailAuthor)
 router.get('/create',authorController.createAuthor)
-// router.put('/books/edit/:id',authorController.processUpdateBook)
+router.get('/select',authorController.select)
+router.post('/create',bookAuthorController.processCreate)
 
 // router.post('/books/edit/:id',authorController.deleteeBook)
 
