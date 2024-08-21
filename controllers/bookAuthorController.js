@@ -17,6 +17,8 @@ const bookAuthorController={
         let book=await bookAuthorController.checkExists(db.Book,'title',req.body.title)
         
         if(!book){
+            console.log('no book');
+            
             book= await db.Book.create({
                 title:req.body.title,
                 cover:req.body.cover,
@@ -24,17 +26,22 @@ const bookAuthorController={
         })
         }
         if(!author){     
+             console.log('no author');
             author= await db.Author.create({
-                name:req.body.authorNew,
+                name:req.body.author,
                 country:req.body.country
         })
         }
-         if (book && book.id && author && author.id) {
-            await book.addAuthor(author);
+         if (book && book.id){
+            console.log('entre al if de libro');
+            
+            await book.addAuthor(author)
+         }
+          if(author && author.id) {
+            console.log('entre al if de author');
+            author.addBook(book)
+        } 
             res.redirect('/books');
-        } else {
-            res.status(404).send('No se pudo crear el libro o el autor');
-        }
     },
 
 }
