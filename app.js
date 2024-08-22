@@ -1,5 +1,6 @@
 const express = require('express');
 const method=require('method-override');
+const path=require('path')
 
 const app = express();
 const session =require('express-session');
@@ -11,6 +12,8 @@ app.use(method('_method'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.set('view engine', 'ejs');
+app.use('/bootstrap-icons', express.static(path.join(__dirname, 'node_modules/bootstrap-icons')));
+
 app.use(session({
   secret: 'tu_clave_secreta_aqui',
   resave: false,
