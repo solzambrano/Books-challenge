@@ -40,6 +40,19 @@ const authorController={
     createAuthor:async(req,res)=>{
        let book= await authorController.bookWithoutAuthor()
             res.render('createAuthor',{book})
+    },
+    processDelete:async(req,res)=>{
+        const author=await db.Author.findByPk(req.params.id);
+        console.log('autor',author)
+        if(author){
+             await db.sequelize.models.BooksAuthors.destroy({
+                where: { AuthorId: req.params.id }
+            });
+            await db.Author.destroy({
+                where:{id:req.params.id}
+            });
+        res.redirect('/authors');
+        }
     }
 }
 
