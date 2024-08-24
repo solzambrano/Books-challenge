@@ -33,7 +33,9 @@ app.listen(3000, () => {
 
 
 //rutas
-
+app.get('/', (req, res) => {
+  res.redirect('/books'); // Asumiendo que tienes una vista 'home.ejs'
+});
 app.use('/books',home)
 app.use('/authors',authors)
 app.use('/users',user)
