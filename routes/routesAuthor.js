@@ -8,6 +8,8 @@ router.get('/:id/books',authorController.detailAuthor)
 router.get('/create',authorController.createAuthor)
 router.get('/select',authorController.select)
 router.post('/create',bookAuthorController.processCreate)
+router.get('/edit/:id',authorController.edit)
+router.put('/edit/:id',authorController.processDelete)
 router.delete('/delete/:id',authorController.processDelete)
 
 // router.post('/books/edit/:id',authorController.deleteeBook)

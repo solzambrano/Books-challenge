@@ -41,6 +41,12 @@ const authorController={
        let book= await authorController.bookWithoutAuthor()
             res.render('createAuthor',{book})
     },
+    edit:(req,res)=>{
+        db.Author.findByPk(req.params.id)
+        .then(author=>{
+            res.render('editAuthor',{author})
+        })
+    },
     processDelete:async(req,res)=>{
         const author=await db.Author.findByPk(req.params.id);
         console.log('autor',author)
