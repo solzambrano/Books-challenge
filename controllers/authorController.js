@@ -47,6 +47,10 @@ const authorController={
             res.render('editAuthor',{author})
         })
     },
+    updateAuthor:async(req,res)=>{
+        console.log(req.body);
+        res.send(req.body)
+    },
     processDelete:async(req,res)=>{
         const author=await db.Author.findByPk(req.params.id);
         console.log('autor',author)

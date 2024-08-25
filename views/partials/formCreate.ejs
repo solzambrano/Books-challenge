@@ -7,7 +7,7 @@
                 <div class="col-md-9 pe-5">
                   <input type="text" name="author" 
                   class="form-control form-control-lg"  requerid 
-                  value="<%= locals.oldData ? oldData.name : '' %>"/>
+                  value="<%= locals.author? author.name : locals.oldData ? oldData.name : '' %>"/>
                 </div>
               </div>
               <div class="row align-items-center pt-4 pb-3">
@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-9 pe-5">
                   <input type="text" name="country" requerid class="form-control form-control-lg" 
-                   value="<%= locals.oldData ? oldData.country : '' %>"/>
+                   value="<%= locals.author? author.country : locals.oldData ? oldData.country : '' %>"/>
                 </div>
               </div>           
         </div>

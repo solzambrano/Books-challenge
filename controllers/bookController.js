@@ -55,11 +55,9 @@ const bookController={
                 [db.Sequelize.Op.like]: '%'+req.body.title+'%'
             }
         },
-    })
-    .then(books => {
+    }).then(books => {
         res.render('search', { books })
-    })
-        .catch(err=>console.log(err))
+    }).catch(err=>console.log(err))
     },
     deleteBook:async (req,res)=>{
         const book= await db.Book.findByPk(req.params.id)
