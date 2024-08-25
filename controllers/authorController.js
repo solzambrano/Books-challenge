@@ -48,8 +48,16 @@ const authorController={
         })
     },
     updateAuthor:async(req,res)=>{
-        console.log(req.body);
-        res.send(req.body)
+        db.Author.update({
+            name:req.body.author,
+            country:req.body.country,
+        },
+        {where:{id:req.params.id}}
+        )
+       .then(author => {
+         author[0]==1 ? res.redirect('/authors'): res.status(404).send('Author not found');
+        })
+        .catch(err=>console.log(err))
     },
     processDelete:async(req,res)=>{
         const author=await db.Author.findByPk(req.params.id);
