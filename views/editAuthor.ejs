@@ -18,7 +18,7 @@
                 <h1 class="text-white mb-4">Edit Author</h1>
                 <div class="card-body">
                     <form class="card" action="/authors/edit/<%=author.id%>?_method=PUT" method="POST">
-                        <%- include('partials/formCreate.ejs',{author}) %>
+                        <%- include('partials/formCreate.ejs', { author: author }) %>
                         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                             <button type="submit" class="btn btn-primary btn-lg">Edit</button>
                             <a href="/" >
