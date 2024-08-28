@@ -17,7 +17,8 @@
          <% if(!locals.userLogged){ %>
          <li class="nav-item"><a href="/users/login" class="btn btn-outline-primary me-2">Login</a></li>
         <% } else if (locals.isLogged) { %>
-         <li class="nav-item"><a href="/books/create" class=" btn btn-outline-primary me-2">Create</a></li>
+         <li class="nav-item"><a href="/books/create" class=" btn btn-outline-primary me-2">Create Book</a></li>
+         <li class="nav-item"><a href="/authors/create" class="btn btn-outline-primary me-2">Create Author</a></li>
            <li class="nav-item"><a href="/users/register" class="btn btn-outline-primary me-2">Sign-up</a></li>
          <li class="nav-item dropdown list-unstyled">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,8 +29,6 @@
           </ul>
         </li>
        <% } %>
-         <li class="nav-item"><a href="/authors/create" class="btn btn-outline-primary me-2">crearrrr</a></li>
-
       </ul>
     </div>
   </div>
