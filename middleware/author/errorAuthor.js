@@ -1,7 +1,6 @@
 const { validationResult } = require('express-validator');
 
 const errorHandler = (req, res, next) => {
-    console.log('aquiiiii',req.body)
      let author=req.params
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

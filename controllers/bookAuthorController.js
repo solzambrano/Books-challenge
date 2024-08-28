@@ -10,37 +10,35 @@ const bookAuthorController={
             }
         })
     },
-    processCreate:async(req,res)=>{    
-        console.log('mirameeeeeeeeeeeee',req.body);
-           
-        let author=await bookAuthorController.checkExists(db.Author,'Name',req.body.author)
-        let book=await bookAuthorController.checkExists(db.Book,'title',req.body.title)
-        
-        if(!book){
-            console.log('no book');
-            
-            book= await db.Book.create({
-                title:req.body.title,
-                cover:req.body.cover,
-                description:req.body.description
-        })
-        }
-        if(!author){     
+    processCreate: async(req,res)=>{    
+        let books=Array.isArray(req.body.title)?req.body.title:[req.body.title];
+        let author=await bookAuthorController.checkExists(db.Author,'Name',req.body.author);
+         if(!author){     
              console.log('no author');
             author= await db.Author.create({
                 name:req.body.author,
                 country:req.body.country
         })
         }
-         if (book && book.id){
-            console.log('entre al if de libro');
-            
-            await book.addAuthor(author)
-         }
-          if(author && author.id) {
-            console.log('entre al if de author');
-            author.addBook(book)
-        } 
+       for(book of books){
+            let bookModel= await bookAuthorController.checkExists(db.Book,'title',book)
+             if(!bookModel){
+                bookModel= await db.Book.create({
+                    title:req.body.title,
+                    cover:req.body.cover,
+                    description:req.body.description
+                })
+            }
+            //la siguiente linea es para asociar al author,los id del/los libros
+            author.addBook(bookModel)
+        }
+        //    if(author && author.id) {
+        //         console.log('entre al if de author');
+        //         books.forEach(book => {
+        //             console.log('libro',book);
+        //             author.addBook(book)
+        //         });
+        //  } 
             res.redirect('/books');
     },
 
