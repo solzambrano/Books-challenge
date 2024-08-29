@@ -3,8 +3,7 @@ const {body}=require('express-validator');
 let validation=[
     body('name')
     .notEmpty().withMessage('This field must be complete').bail()
-    .isAlpha().withMessage('only letters')
-    .matches(/^\w+\s\w+$/).withMessage('The first and last name must be separated by a space'),
+    .matches(/^[A-Za-z.\s]+$/).withMessage('Only letters, spaces, and periods are allowed'),
     body('email')
     .notEmpty().withMessage('This field must be complete').bail()
     .isEmail().withMessage('It´s not an email'),

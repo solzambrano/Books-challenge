@@ -21,21 +21,22 @@ const userController={
     })
     .catch(error => {
         console.error('Error en el login:', error);
-        res.status(500).json({ success: false, message: 'Error en el servidor' });
     });
 },
     register:(req,res)=>res.render('register'),
-    processRegister:(req,res)=>{
-        db.User.create({
+    processRegister:async (req,res)=>{
+        const user= await db.User.create({
             Name:req.body.name,
             Email:req.body.email,
             Country:req.body.country,
             Pass:bcryptjs.hashSync(req.body.password, 10),
             CategoryId:req.body.category
-        }).then(user=>{
+        })
+        if(user){
             res.redirect('/books')
-        }).catch(err=>console.log('err register:',err))
-        res.status(500).json({ success: false, message: 'Error en el servidor' });
+        }else{
+            res.send('404')
+        }
     },
     logout: (req, res)=> {
 		res.clearCookie("user");
