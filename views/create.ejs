@@ -58,14 +58,15 @@
                   <h6 class="mb-0">Authors</h6>
                 </div>
                 <div class="col-md-9 pe-5">
-                  <select class="form-select" name="author">
+                  <select class="form-select" name="nameAuthor">
+                    <option id="selectionAuthor" type ="button"> Selected author</option>
                     <% if(locals.authors) { %>
-                    <% {authors.forEach(author => {%>
+                    <% authors.forEach(author => {%>
                      <option value="<%= author.name %>" 
                       <%= (locals.oldData && locals.oldData.author === author.name) ? 'selected' : '' %> >
                       <%= author.name %>
                     </option>
-                   <% })} %>
+                   <% }) %>
                     <option id="addAuthor" type ="button"> Add new author</option>
                   <% } %>
                   </select> 
