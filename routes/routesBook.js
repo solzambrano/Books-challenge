@@ -15,6 +15,7 @@ router.put('/edit/:id',bookController.processUpdateBook)
 router.delete('/edit/:id',bookController.deleteBook)
 
 router.post('/search',bookController.processSearchBook)
+router.get('/input',bookController.inputAuthor)
 router.post('/create',bookVerification,commonController.processCreate)
 
 

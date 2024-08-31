@@ -51,8 +51,10 @@
                 </div>
               </div>
               <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-2">
-                <button id="linkAuthor" type="button" class="btn btn-primary btn-lg">link author</button>
+                <button id="linkAuthor" type="button" class="btn btn-primary btn-lg">Add author</button>
+                <button id="addAuthor" type="button" class="btn btn-primary btn-lg">Add new author</button>
               </div>
+              <% if(locals.authors) { %>
               <div id="selectAuthor" class="row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
                   <h6 class="mb-0">Authors</h6>
@@ -60,27 +62,23 @@
                 <div class="col-md-9 pe-5">
                   <select class="form-select" name="nameAuthor">
                     <option id="selectionAuthor" type ="button"> Selected author</option>
-                    <% if(locals.authors) { %>
                     <% authors.forEach(author => {%>
                      <option value="<%= author.name %>" 
                       <%= (locals.oldData && locals.oldData.author === author.name) ? 'selected' : '' %> >
                       <%= author.name %>
                     </option>
                    <% }) %>
-                    <option id="addAuthor" type ="button"> Add new author</option>
-                  <% } %>
                   </select> 
                 </div>
               </div>
+              <% } %>
               <div id="formAuthor">
-                <%- include('partials/formCreate.ejs') %>
               </div>
               <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <button type="submit" class="btn btn-primary btn-lg">Create</button>
                 <a href="/books" >
                   <button type="button" class="btn btn-primary btn-lg">Cancel</button>
                 </a>
-                 <button id="cancelAuthor" type="button" class="btn btn-primary btn-lg cancel">Cancel new author</button>
               </div>
             </div>
           </form>

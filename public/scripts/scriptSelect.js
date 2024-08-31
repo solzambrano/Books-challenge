@@ -6,7 +6,7 @@ addAuthor.addEventListener('click',()=>{
         .then(html => {
             let tempDiv = document.createElement('div');
             tempDiv.innerHTML = html;
-              let newSelect = tempDiv.firstElementChild;
+            let newSelect = tempDiv.firstElementChild;
                 
                 // Agregar un botón de eliminación individual a cada nuevo select
                 let deleteButton = document.createElement('button');

@@ -1,5 +1,4 @@
 
-            <div class="card-body">
               <div class="row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
                   <h6 class="mb-0">Complete name</h6>
@@ -10,19 +9,6 @@
                   value="<%= (locals.author?.name ?? locals.oldData?.author) || '' %>" >
                  <% if (locals.errors && errors.author) { %>
                       <p class="text-danger"><%=errors.author.msg %></p>
-                    <%}%>
+                  <%}%>
                 </div>
-              </div>
-              <div class="row align-items-center pt-4 pb-3">
-                <div class="col-md-3 ps-5">
-                  <h6 class="mb-0">Country</h6>
-                </div>
-                <div class="col-md-9 pe-5">
-                  <input type="text" name="country" requerid class="form-control form-control-lg" 
-                   value="<%= (locals.author?.country ?? locals.oldData?.country) || '' %>">
-                <% if (locals.errors && errors.country) { %>
-                      <p class="text-danger"><%=errors.country.msg %></p>
-                    <%}%>
-                </div>
-              </div>           
-            </div>
+              </div>      
