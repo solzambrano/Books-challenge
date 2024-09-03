@@ -1,8 +1,9 @@
 const express=require('express');
 const router=express.Router();
 const bookVerification=require('../middleware/book/validationBookMiddleware')
-const bookController=require('../controllers/bookController')
-const commonController= require('../controllers/bookAuthorController')
+const bookController=require('../controllers/bookController');
+const commonController= require('../controllers/bookAuthorController');
+const validationBook=require('../middleware/book/errorBook')
 
 router.get('/',bookController.listBook)
 router.get('/detail/:id',bookController.detailBook)
@@ -16,7 +17,7 @@ router.delete('/edit/:id',bookController.deleteBook)
 
 router.post('/search',bookController.processSearchBook)
 router.get('/input',bookController.inputAuthor)
-router.post('/create',bookVerification,commonController.processCreate)
+router.post('/create',validationBook,bookVerification,commonController.processCreate)
 
 
 module.exports=router
