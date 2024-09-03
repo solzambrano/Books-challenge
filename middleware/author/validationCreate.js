@@ -7,7 +7,8 @@ const validationCreate = async (req, res, next) => {
     console.log('entre al midd',req.body);
     
     const normalizedName = req.body.author.trim().toLowerCase();
-    const errors =await validationResult(req);    
+    const errors =await validationResult(req);  
+    //trae todos los libros  
     const book= await db.Book.findAll({
                 include: [{
                 model: db.Author,
@@ -24,6 +25,7 @@ const validationCreate = async (req, res, next) => {
         oldData:req.body,
         book}));
     }
+    //no hay errores
     else{
         const author= await db.Author.findOne({
            where: Sequelize.where(
@@ -35,7 +37,7 @@ const validationCreate = async (req, res, next) => {
             return res.render('createAuthor', {
 				        errors: {
 				        author: {
-				            msg: 'This book is already exists'
+				            msg: 'This author is already exists'
 					            }
 				            },
 			            oldData: req.body,

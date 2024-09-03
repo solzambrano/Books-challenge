@@ -2,6 +2,7 @@ let addAuthor=document.getElementById("addAuthor");
 let formAuthor=document.getElementById("formAuthor");
 let selectAuthor= document.getElementById('selectAuthor')
 let link=document.getElementById('linkAuthor');
+let authorSelected=document.querySelector('select')
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -13,8 +14,9 @@ link.addEventListener("click",(e)=>{
         e.target.innerText="Quit author"
         selectAuthor.style.display='flex'
     }else{
-        e.target.innerText="Add author"
+        e.target.innerText="Add author" 
         selectAuthor.style.display='none'
+        authorSelected.value='Selected author'
     }
 })
 const addInput=(input)=>{

@@ -59,6 +59,9 @@ const bookController={
         res.render('search', { books })
     }).catch(err=>console.log(err))
     },
+    inputAuthor:(req,res)=>{
+        res.render('partials/formCreate')
+    },
     deleteBook:async (req,res)=>{
         const book= await db.Book.findByPk(req.params.id)
         if (book) {
