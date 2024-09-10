@@ -1,6 +1,6 @@
 let selectContainer = document.getElementById("select-container");
-let addAuthor = document.getElementById('add');
-addAuthor.addEventListener('click',()=>{
+let linkBook = document.getElementById('linkBook');
+linkBook.addEventListener('click',()=>{
      fetch('http://localhost:3000/authors/select')
        .then(res => res.text()) // Asegúrate de convertir la respuesta a texto
         .then(html => {
