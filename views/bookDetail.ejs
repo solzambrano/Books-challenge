@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Books Repository</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="/bootstrap-icons/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
     <%- include('partials/header.ejs') %>
-
     <div class="container">
       <div class="px-4 py-5 my-5 text-center">
         <img class="d-block mx-auto mb-4" src="<%= book.cover %>" alt="" width="172" height="257">
@@ -21,7 +21,8 @@
            <% if (book.authors && book.authors.length > 0) { %>
             <%= book.authors.map(author => author.name).join(', ') %>
           <% } else { %>
-              No hay autores registrados
+              No hay autores registrados 
+               <a href="/books/link/author/<%=book.id%>"><i class="bi bi-caret-right-square text-primary" title="Vincular libro con autor"></i></a>
           <% } %>
           </p>
           <p class="lead mb-4 fw-bold">Release Date: </p>

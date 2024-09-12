@@ -18,6 +18,6 @@ router.delete('/edit/:id',bookController.deleteBook)
 router.post('/search',bookController.processSearchBook)
 router.get('/input',bookController.inputAuthor)
 router.post('/create',validationBook,bookVerification,commonController.processCreate)
-
+router.get('/link/author/:id',bookController.linkAuthor)
 
 module.exports=router

@@ -30,6 +30,15 @@ const bookController={
         })
         .catch(err=>console.log(err))
     },
+    linkAuthor:async(req,res)=>{
+       const authors= await db.Author.findAll({
+            order:[['name','ASC']]
+        })
+        const book = await db.Book.findByPk(req.params.id)
+        if(authors && book){
+            res.render('linkAuthor',{authors,book})
+        }
+    },
     updateBook:(req,res)=>{
         db.Book.findByPk(req.params.id)
         .then(book=> res.render('editBook',{book}))
