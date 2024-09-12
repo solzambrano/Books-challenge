@@ -19,5 +19,6 @@ router.post('/search',bookController.processSearchBook)
 router.get('/input',bookController.inputAuthor)
 router.post('/create',validationBook,bookVerification,commonController.processCreate)
 router.get('/link/author/:id',bookController.linkAuthor)
+router.post('/link/author',commonController.processCreate)
 
 module.exports=router

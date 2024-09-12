@@ -3,6 +3,8 @@ let db = require('../database/models');
 
 const bookAuthorController={
     checkExists:async (model,field,value)=>{ 
+        console.log('existe',model);
+        
         return await model.findOne({
             where:{
                 [field]:value
@@ -28,16 +30,18 @@ const bookAuthorController={
                      description:data.description
              })
     },
-    processCreate: async(req,res)=>{   
+    processCreate: async(req,res)=>{ 
+        console.log(req.body);
+          
         let authorModels=[];
         let bookModels=[];
        let newAuthor=bookAuthorController.differentAuthor(req.body)//junto el autor de select y el del input         
          if(newAuthor.length !==0){//si hay autores
             for(author of newAuthor){
                 let authorModel=await bookAuthorController.checkExists(db.Author,'Name',author);//verifico s cada autor existe
-            if(!authorModel){
-                authorModel= await bookAuthorController.createModelAuthor(req,author)
-            }
+             if(!authorModel){
+                 authorModel= await bookAuthorController.createModelAuthor(req,author)
+             }
             authorModels.push(authorModel)
             }
          }    
@@ -47,20 +51,20 @@ const bookAuthorController={
             if(books.length !==0){ 
                 for(book of books){
                     let bookModel= await bookAuthorController.checkExists(db.Book,'title',book)
-                    if(!bookModel){
-                        bookModel=await bookAuthorController. createModelBook(req.body)  
-                    }
+                     if(!bookModel){
+                         bookModel=await bookAuthorController. createModelBook(req.body)  
+                     }
                 bookModels.push(bookModel)
                 }// fin de for
             }
          }
         if(authorModels.length!=0 && bookModels.length != 0){
-        for(authorModel of authorModels){
-            for(bookModel of bookModels){
-                await authorModel.addBook(bookModel)
-                await bookModel.addAuthor(authorModel)
-            }
-        }
+         for(authorModel of authorModels){
+             for(bookModel of bookModels){
+                 await authorModel.addBook(bookModel)
+                 await bookModel.addAuthor(authorModel)
+             }
+         }
         }
     res.redirect('/books');
     }
