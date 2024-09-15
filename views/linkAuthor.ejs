@@ -27,26 +27,15 @@
                   <input type="text" name="title" 
                   class="form-control form-control-lg"  value="<%=book.title%>"/>
                 </div>
-
               </div>
-              <% if(locals.authors) { %>
-              <div id="selectAuthor" class="row align-items-center pt-4 pb-3">
-                <div class="col-md-3 ps-5">
-                  <h6 class="mb-0">Authors</h6>
+              <% if(locals.authors) { %>      
+                <%- include('partials/selectAuthor')%>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center pt-3 pb-3">
+                <i id="limkAuthor" title="Agregar mas autores" class="bi bi-plus-square btn btn-primary"></i>
                 </div>
-                <div class="col-md-9 pe-5">
-                  <select class="form-select" name="nameAuthor">
-                    <option id="selectionAuthor" type ="button"> Selected author</option>
-                    <% authors.forEach(author => {%>
-                     <option value="<%= author.name %>" 
-                      <%= (locals.oldData && locals.oldData.author === author.name) ? 'selected' : '' %> >
-                      <%= author.name %>
-                    </option>
-                   <% }) %>
-                  </select> 
-                </div>
-              </div>
               <% } %>
+              <div id="select-container">
+              </div>
               <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <button type="submit" class="btn btn-primary btn-lg">Link</button>
                 <a href="/books" >
@@ -62,4 +51,5 @@
 </div>
 <%- include('partials/footer.ejs') %>
 </body>
+<script src="/scripts/selectAuthor.js"></script>
 </html>
