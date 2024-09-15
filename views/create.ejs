@@ -63,22 +63,7 @@
                 <button id="addAuthor" type="button" class="btn btn-primary btn-lg">Add new author</button>
               </div>
               <% if(locals.authors) { %>
-              <div id="selectAuthor" class="row align-items-center pt-4 pb-3">
-                <div class="col-md-3 ps-5">
-                  <h6 class="mb-0">Authors</h6>
-                </div>
-                <div class="col-md-9 pe-5">
-                  <select class="form-select" name="nameAuthor">
-                    <option id="selectionAuthor" type ="button"> Selected author</option>
-                    <% authors.forEach(author => {%>
-                     <option value="<%= author.name %>" 
-                      <%= (locals.oldData && locals.oldData.author === author.name) ? 'selected' : '' %> >
-                      <%= author.name %>
-                    </option>
-                   <% }) %>
-                  </select> 
-                </div>
-              </div>
+                <%- include('partials/selectAuthor')%>
               <% } %>
               <div id="formAuthor">
               </div>
@@ -97,5 +82,6 @@
 </div>
 <%- include('partials/footer.ejs') %>
 </body>
+<script src="/scripts/hiddenElements.js"></script>
 <script src="/scripts/authorScript.js"></script>
 </html>

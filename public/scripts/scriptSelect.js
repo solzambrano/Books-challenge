@@ -1,5 +1,6 @@
 let selectContainer = document.getElementById("select-container");
 let linkBook = document.getElementById('linkBook');
+//llamo al select de libros
 linkBook.addEventListener('click',()=>{
      fetch('http://localhost:3000/authors/select')
        .then(res => res.text()) // Asegúrate de convertir la respuesta a texto
@@ -10,12 +11,11 @@ linkBook.addEventListener('click',()=>{
                 
                 // Agregar un botón de eliminación individual a cada nuevo select
                 let deleteButton = document.createElement('button');
-                deleteButton.textContent = 'X';
+                deleteButton.textContent = '';
                 deleteButton.className = 'delete-select col-md-1 btn btn-primary';
                 deleteButton.addEventListener('click', function() {
                     selectContainer.removeChild(this.parentElement);
                 });
-                
                 newSelect.appendChild(deleteButton);
                 selectContainer.appendChild(newSelect);  
         })

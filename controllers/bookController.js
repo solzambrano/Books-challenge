@@ -64,12 +64,16 @@ const bookController={
                 [db.Sequelize.Op.like]: '%'+req.body.title+'%'
             }
         },
-    }).then(books => {
+        }).then(books => {
         res.render('search', { books })
-    }).catch(err=>console.log(err))
+        }).catch(err=>console.log(err))
     },
     inputAuthor:(req,res)=>{
         res.render('partials/formCreate')
+    },
+    selectBook:async(req,res)=>{
+        let authors=await db.Author.findAll()
+        res.render('partials/selectAuthor',{authors})
     },
     deleteBook:async (req,res)=>{
         const book= await db.Book.findByPk(req.params.id)
