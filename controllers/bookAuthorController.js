@@ -3,8 +3,6 @@ let db = require('../database/models');
 
 const bookAuthorController={
     checkExists:async (model,field,value)=>{ 
-        console.log('existe',model);
-        
         return await model.findOne({
             where:{
                 [field]:value
@@ -12,10 +10,12 @@ const bookAuthorController={
         })
     },
     differentAuthor:(data)=>{
-         let author = Array.isArray(data.author) ? data.author : (data.author ? [data.author] : []);
-         data.nameAuthor!== 'Selected author' &&  data.nameAuthor!== undefined ? 
-         author.push(data.nameAuthor):author
-         return author
+        if(Array.isArray(data.author)){
+        return data.author.filter(element=>element !=='Selected author')
+        }
+        if(data.author !== 'Selected author'){
+            return [data.author]
+        }
     },
     createModelAuthor:async(req,data)=>{  
        return await db.Author.create({
@@ -31,14 +31,12 @@ const bookAuthorController={
              })
     },
     processCreate: async(req,res)=>{ 
-        console.log(req.body);
-          
         let authorModels=[];
         let bookModels=[];
-       let newAuthor=bookAuthorController.differentAuthor(req.body)//junto el autor de select y el del input         
-         if(newAuthor.length !==0){//si hay autores
+       let newAuthor=bookAuthorController.differentAuthor(req.body)//junto el autor de select y el del input 
+         if(newAuthor && newAuthor.length !==0){//si hay autores
             for(author of newAuthor){
-                let authorModel=await bookAuthorController.checkExists(db.Author,'Name',author);//verifico s cada autor existe
+                let authorModel=await bookAuthorController.checkExists(db.Author,'Name',author);//verifico s cada autor existe      
              if(!authorModel){
                  authorModel= await bookAuthorController.createModelAuthor(req,author)
              }

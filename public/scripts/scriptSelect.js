@@ -11,7 +11,7 @@ linkBook.addEventListener('click',()=>{
                 
                 // Agregar un botón de eliminación individual a cada nuevo select
                 let deleteButton = document.createElement('button');
-                deleteButton.textContent = '';
+                deleteButton.textContent = '-';
                 deleteButton.className = 'delete-select col-md-1 btn btn-primary';
                 deleteButton.addEventListener('click', function() {
                     selectContainer.removeChild(this.parentElement);
