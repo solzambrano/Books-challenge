@@ -61,7 +61,6 @@ const authorController={
     },
     processDelete:async(req,res)=>{
         const author=await db.Author.findByPk(req.params.id);
-        console.log('autor',author)
         if(author){
              await db.sequelize.models.BooksAuthors.destroy({
                 where: { AuthorId: req.params.id }

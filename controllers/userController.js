@@ -13,7 +13,6 @@ const userController={
         if (user) {
             if (req.session.userPassword) {
                 req.session.user = user;
-                console.log('MIRAAAAAAAAAAAAA',user);
                 res.cookie('user', user.Name, { maxAge: 1000 });
                 res.redirect('/books')
             }
